@@ -1,0 +1,6 @@
+# Don't touch library code
+/node_modules/
+/pnpm-lock.yaml
+
+# Don't touch IDE configuraiton
+/.idea/

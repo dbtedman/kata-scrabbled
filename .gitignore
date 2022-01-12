@@ -1,0 +1,5 @@
+# Don't include IDE configuraiton
+/.idea/
+
+# Don't include external dependencies
+/node_modules/
