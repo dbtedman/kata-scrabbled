@@ -1,23 +1,25 @@
-package domain
+package square
 
 import (
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board_square"
 	"strings"
 )
 
 type RenderSquares struct {
-	BoardsRepository *Boards
+	BoardsRepository *board.Boards
 }
 
-func (rs RenderSquares) Run() ([][]BoardSquare, error) {
-	var squares [][]BoardSquare
+func (rs RenderSquares) Run() ([][]board_square.BoardSquare, error) {
+	var squares [][]board_square.BoardSquare
 
 	squareValues, _ := rs.BoardsRepository.List()
 
 	for _, squareValueRow := range squareValues {
-		var row []BoardSquare
+		var row []board_square.BoardSquare
 
 		for squareValueCount, squareValue := range squareValueRow {
-			row = append(row, BoardSquare{
+			row = append(row, board_square.BoardSquare{
 				Label:         strings.Replace(squareValue.Id, "board", "", 1),
 				ModifierClass: rs.tileClass(string([]rune(strings.Replace(squareValue.Id, "board", "", 1))[0]), squareValueCount+1),
 				Id:            squareValue.Id,

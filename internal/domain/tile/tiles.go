@@ -1,11 +1,15 @@
-package domain
+package tile
+
+import (
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board_square"
+)
 
 type Tiles struct {
-	tiles []BoardSquareValue
+	tiles []board_square.BoardSquareValue
 }
 
 func (receiver *Tiles) Seed() {
-	receiver.tiles = []BoardSquareValue{
+	receiver.tiles = []board_square.BoardSquareValue{
 		{
 			Id:    "yours0",
 			Value: "",
@@ -37,11 +41,11 @@ func (receiver *Tiles) Seed() {
 	}
 }
 
-func (receiver *Tiles) List() ([]BoardSquareValue, error) {
+func (receiver *Tiles) List() ([]board_square.BoardSquareValue, error) {
 	return receiver.tiles, nil
 }
 
-func (receiver *Tiles) Update(value []BoardSquareValue) error {
+func (receiver *Tiles) Update(value []board_square.BoardSquareValue) error {
 	receiver.tiles = value
 	return nil
 }

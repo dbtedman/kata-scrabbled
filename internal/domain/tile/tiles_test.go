@@ -1,10 +1,10 @@
-package domain
+package tile_test
 
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-func TestRun(t *testing.T) {
+func TestTiles(t *testing.T) {
 	assert.True(t, true)
 }

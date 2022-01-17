@@ -1,4 +1,4 @@
-package domain
+package board_square
 
 type BoardSquare struct {
 	Label         string

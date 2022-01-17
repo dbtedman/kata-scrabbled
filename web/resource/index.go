@@ -1,7 +1,10 @@
 package resource
 
 import (
-	"github.com/dbtedman/kata-scrabbled/internal/domain"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board_square"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/square"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/tile"
 	"html/template"
 	"log"
 	"net/http"
@@ -10,14 +13,14 @@ import (
 )
 
 type Index struct {
-	BoardsRepository *domain.Boards
-	TilesRepository  *domain.Tiles
+	BoardsRepository *board.Boards
+	TilesRepository  *tile.Tiles
 }
 
 type IndexData struct {
-	Squares     [][]domain.BoardSquare
-	YourSquares [][]domain.BoardSquare
-	Suggestions []domain.Suggestion
+	Squares     [][]board_square.BoardSquare
+	YourSquares [][]board_square.BoardSquare
+	Suggestions []board_square.Suggestion
 }
 
 func (ir Index) Handle(w http.ResponseWriter, r *http.Request) {
@@ -32,18 +35,18 @@ func (ir Index) Handle(w http.ResponseWriter, r *http.Request) {
 // Render html to display the current board, your tiles, available actions, and
 // suggestions for next moves.
 func (ir Index) handleGet(w http.ResponseWriter, r *http.Request) {
-	useCase := domain.RenderSquares{
+	useCase := square.RenderSquares{
 		BoardsRepository: ir.BoardsRepository,
 	}
 	squares, _ := useCase.Run()
 
-	var yourSquares [][]domain.BoardSquare
-	var yourSquare []domain.BoardSquare
+	var yourSquares [][]board_square.BoardSquare
+	var yourSquare []board_square.BoardSquare
 
 	existingTiles, _ := ir.TilesRepository.List()
 
 	for _, existingTile := range existingTiles {
-		yourSquare = append(yourSquare, domain.BoardSquare{
+		yourSquare = append(yourSquare, board_square.BoardSquare{
 			Id:    existingTile.Id,
 			Value: existingTile.Value,
 		})
@@ -51,7 +54,7 @@ func (ir Index) handleGet(w http.ResponseWriter, r *http.Request) {
 
 	yourSquares = append(yourSquares, yourSquare)
 
-	suggestions := []domain.Suggestion{{
+	suggestions := []board_square.Suggestion{{
 		Word:             strings.ToUpper("Word"),
 		BoardSquareStart: "A1",
 		BoardSquareEnd:   "A4",

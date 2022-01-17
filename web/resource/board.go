@@ -3,12 +3,13 @@ package resource
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/dbtedman/kata-scrabbled/internal/domain"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board_square"
 	"net/http"
 )
 
 type Board struct {
-	BoardsRepository *domain.Boards
+	BoardsRepository *board.Boards
 }
 
 func (ir Board) Handle(w http.ResponseWriter, r *http.Request) {
@@ -46,14 +47,14 @@ func (ir Board) handlePost(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func convert(board [][]boardSquareValue) ([][]domain.BoardSquareValue, error) {
-	var result [][]domain.BoardSquareValue
+func convert(board [][]boardSquareValue) ([][]board_square.BoardSquareValue, error) {
+	var result [][]board_square.BoardSquareValue
 
 	for _, boardRow := range board {
-		var resultRow []domain.BoardSquareValue
+		var resultRow []board_square.BoardSquareValue
 
 		for _, boardColumn := range boardRow {
-			resultRow = append(resultRow, domain.BoardSquareValue{
+			resultRow = append(resultRow, board_square.BoardSquareValue{
 				Value: boardColumn.Value,
 				Id:    boardColumn.Id,
 			})

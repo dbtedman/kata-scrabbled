@@ -1,7 +1,8 @@
 package web
 
 import (
-	"github.com/dbtedman/kata-scrabbled/internal/domain"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/board"
+	"github.com/dbtedman/kata-scrabbled/internal/domain/tile"
 	resource2 "github.com/dbtedman/kata-scrabbled/web/resource"
 	"log"
 	"net/http"
@@ -12,8 +13,8 @@ type Web struct {
 }
 
 func (w Web) Listen() error {
-	boardsRepository := domain.Boards{}
-	tilesRepository := domain.Tiles{}
+	boardsRepository := board.Boards{}
+	tilesRepository := tile.Tiles{}
 
 	boardsRepository.Seed()
 	tilesRepository.Seed()
