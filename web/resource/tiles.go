@@ -1,15 +1,14 @@
-package web
+package resource
 
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/dbtedman/kata-scrabbled/entity"
-	"github.com/dbtedman/kata-scrabbled/repository"
+	"github.com/dbtedman/kata-scrabbled/internal/domain"
 	"net/http"
 )
 
 type Tiles struct {
-	TilesRepository *repository.Tiles
+	TilesRepository *domain.Tiles
 }
 
 func (ti Tiles) Handle(w http.ResponseWriter, r *http.Request) {
@@ -45,10 +44,10 @@ func (ti Tiles) handlePost(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func convertTilesToBoardSquareValue(tiles []tilesValue) ([]entity.BoardSquareValue, error) {
-	var resultRow []entity.BoardSquareValue
+func convertTilesToBoardSquareValue(tiles []tilesValue) ([]domain.BoardSquareValue, error) {
+	var resultRow []domain.BoardSquareValue
 	for _, tile := range tiles {
-		resultRow = append(resultRow, entity.BoardSquareValue{
+		resultRow = append(resultRow, domain.BoardSquareValue{
 			Value: tile.Value,
 			Id:    tile.Id,
 		})

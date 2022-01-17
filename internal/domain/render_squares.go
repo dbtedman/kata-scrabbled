@@ -1,25 +1,23 @@
-package usecase
+package domain
 
 import (
-	"github.com/dbtedman/kata-scrabbled/entity"
-	"github.com/dbtedman/kata-scrabbled/repository"
 	"strings"
 )
 
 type RenderSquares struct {
-	BoardsRepository *repository.Boards
+	BoardsRepository *Boards
 }
 
-func (rs RenderSquares) Run() ([][]entity.BoardSquare, error) {
-	var squares [][]entity.BoardSquare
+func (rs RenderSquares) Run() ([][]BoardSquare, error) {
+	var squares [][]BoardSquare
 
 	squareValues, _ := rs.BoardsRepository.List()
 
 	for _, squareValueRow := range squareValues {
-		var row []entity.BoardSquare
+		var row []BoardSquare
 
 		for squareValueCount, squareValue := range squareValueRow {
-			row = append(row, entity.BoardSquare{
+			row = append(row, BoardSquare{
 				Label:         strings.Replace(squareValue.Id, "board", "", 1),
 				ModifierClass: rs.tileClass(string([]rune(strings.Replace(squareValue.Id, "board", "", 1))[0]), squareValueCount+1),
 				Id:            squareValue.Id,

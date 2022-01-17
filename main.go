@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/dbtedman/kata-scrabbled/port"
+	"github.com/dbtedman/kata-scrabbled/web"
 	"log"
 )
 
@@ -13,9 +13,9 @@ func main() {
 	// TODO: Need to move app core setup here, including the repository data
 	// TODO: Need to seed data currently populated in RenderSquares
 
-	web := port.Web{
+	aWeb := web.Web{
 		Addr: ":8080",
 	}
 
-	log.Fatal(web.Listen())
+	log.Fatal(aWeb.Listen())
 }

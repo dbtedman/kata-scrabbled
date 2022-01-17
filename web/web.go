@@ -1,8 +1,8 @@
-package port
+package web
 
 import (
-	"github.com/dbtedman/kata-scrabbled/port/web"
-	"github.com/dbtedman/kata-scrabbled/repository"
+	"github.com/dbtedman/kata-scrabbled/internal/domain"
+	resource2 "github.com/dbtedman/kata-scrabbled/web/resource"
 	"log"
 	"net/http"
 )
@@ -12,26 +12,26 @@ type Web struct {
 }
 
 func (w Web) Listen() error {
-	boardsRepository := repository.Boards{}
-	tilesRepository := repository.Tiles{}
+	boardsRepository := domain.Boards{}
+	tilesRepository := domain.Tiles{}
 
 	boardsRepository.Seed()
 	tilesRepository.Seed()
 
-	index := web.Index{
+	index := resource2.Index{
 		BoardsRepository: &boardsRepository,
 		TilesRepository:  &tilesRepository,
 	}
-	board := web.Board{
+	board := resource2.Board{
 		BoardsRepository: &boardsRepository,
 	}
-	tiles := web.Tiles{
+	tiles := resource2.Tiles{
 		TilesRepository: &tilesRepository,
 	}
-	recommended := web.Recommended{}
+	recommended := resource2.Recommended{}
 
 	// Support serving of static assets
-	fs := http.FileServer(http.Dir("./static"))
+	fs := http.FileServer(http.Dir("./web/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", index.Handle)

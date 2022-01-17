@@ -1,13 +1,11 @@
-package repository
-
-import "github.com/dbtedman/kata-scrabbled/entity"
+package domain
 
 type Tiles struct {
-	tiles []entity.BoardSquareValue
+	tiles []BoardSquareValue
 }
 
 func (receiver *Tiles) Seed() {
-	receiver.tiles = []entity.BoardSquareValue{
+	receiver.tiles = []BoardSquareValue{
 		{
 			Id:    "yours0",
 			Value: "",
@@ -39,11 +37,11 @@ func (receiver *Tiles) Seed() {
 	}
 }
 
-func (receiver *Tiles) List() ([]entity.BoardSquareValue, error) {
+func (receiver *Tiles) List() ([]BoardSquareValue, error) {
 	return receiver.tiles, nil
 }
 
-func (receiver *Tiles) Update(value []entity.BoardSquareValue) error {
+func (receiver *Tiles) Update(value []BoardSquareValue) error {
 	receiver.tiles = value
 	return nil
 }

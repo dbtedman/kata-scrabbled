@@ -1,19 +1,18 @@
-package repository
+package domain
 
 import (
-	"github.com/dbtedman/kata-scrabbled/entity"
 	"strconv"
 )
 
 type Boards struct {
-	boardSquares [][]entity.BoardSquareValue
+	boardSquares [][]BoardSquareValue
 }
 
 func (receiver *Boards) Seed() {
 	for _, i := range []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"} {
-		var row []entity.BoardSquareValue
+		var row []BoardSquareValue
 		for j := range [15]int{} {
-			row = append(row, entity.BoardSquareValue{
+			row = append(row, BoardSquareValue{
 				Id:    "board" + i + strconv.Itoa(j+1),
 				Value: "",
 			})
@@ -22,11 +21,11 @@ func (receiver *Boards) Seed() {
 	}
 }
 
-func (receiver *Boards) List() ([][]entity.BoardSquareValue, error) {
+func (receiver *Boards) List() ([][]BoardSquareValue, error) {
 	return receiver.boardSquares, nil
 }
 
-func (receiver *Boards) Update(value [][]entity.BoardSquareValue) error {
+func (receiver *Boards) Update(value [][]BoardSquareValue) error {
 	receiver.boardSquares = value
 	return nil
 }

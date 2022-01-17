@@ -1,9 +1,7 @@
-package web
+package resource
 
 import (
-	"github.com/dbtedman/kata-scrabbled/entity"
-	"github.com/dbtedman/kata-scrabbled/repository"
-	"github.com/dbtedman/kata-scrabbled/usecase"
+	"github.com/dbtedman/kata-scrabbled/internal/domain"
 	"html/template"
 	"log"
 	"net/http"
@@ -12,14 +10,14 @@ import (
 )
 
 type Index struct {
-	BoardsRepository *repository.Boards
-	TilesRepository  *repository.Tiles
+	BoardsRepository *domain.Boards
+	TilesRepository  *domain.Tiles
 }
 
 type IndexData struct {
-	Squares     [][]entity.BoardSquare
-	YourSquares [][]entity.BoardSquare
-	Suggestions []entity.Suggestion
+	Squares     [][]domain.BoardSquare
+	YourSquares [][]domain.BoardSquare
+	Suggestions []domain.Suggestion
 }
 
 func (ir Index) Handle(w http.ResponseWriter, r *http.Request) {
@@ -34,18 +32,18 @@ func (ir Index) Handle(w http.ResponseWriter, r *http.Request) {
 // Render html to display the current board, your tiles, available actions, and
 // suggestions for next moves.
 func (ir Index) handleGet(w http.ResponseWriter, r *http.Request) {
-	useCase := usecase.RenderSquares{
+	useCase := domain.RenderSquares{
 		BoardsRepository: ir.BoardsRepository,
 	}
 	squares, _ := useCase.Run()
 
-	var yourSquares [][]entity.BoardSquare
-	var yourSquare []entity.BoardSquare
+	var yourSquares [][]domain.BoardSquare
+	var yourSquare []domain.BoardSquare
 
 	existingTiles, _ := ir.TilesRepository.List()
 
 	for _, existingTile := range existingTiles {
-		yourSquare = append(yourSquare, entity.BoardSquare{
+		yourSquare = append(yourSquare, domain.BoardSquare{
 			Id:    existingTile.Id,
 			Value: existingTile.Value,
 		})
@@ -53,7 +51,7 @@ func (ir Index) handleGet(w http.ResponseWriter, r *http.Request) {
 
 	yourSquares = append(yourSquares, yourSquare)
 
-	suggestions := []entity.Suggestion{{
+	suggestions := []domain.Suggestion{{
 		Word:             strings.ToUpper("Word"),
 		BoardSquareStart: "A1",
 		BoardSquareEnd:   "A4",
@@ -62,7 +60,7 @@ func (ir Index) handleGet(w http.ResponseWriter, r *http.Request) {
 
 	data := IndexData{Squares: squares, YourSquares: yourSquares, Suggestions: suggestions}
 
-	fp := path.Join("template", "index.html")
+	fp := path.Join("web", "template", "index.html")
 	tmpl, err := template.ParseFiles(fp)
 
 	if err != nil {
