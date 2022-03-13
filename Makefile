@@ -12,7 +12,7 @@ format:
 	@pnpm run format && gofmt -w ./main.go ./cmd ./internal ./web
 
 test:
-	@go test -cover -coverprofile=coverage.txt ./cmd/.. ./internal/... ./web/...
+	@go test -race -cover -coverprofile=coverage.txt ./cmd/.. ./internal/... ./web/...
 
 build:
-	@go build -mod vendor -o scrabbled
+	@go build -race -mod vendor -o scrabbled ./cmd/scrabbled
