@@ -25,21 +25,23 @@ Visit [http://localhost:8080](http://localhost:8080)
 
 ### Domain Entities
 
-| Entity | Notes |
-| :----- | :---- |
-| ` `    |       |
+| Entity                                                        | Notes |
+| :------------------------------------------------------------ | :---- |
+| [Boards](./internal/domain/board/boards.go)                   |       |
+| [BoardSquare](./internal/domain/board_square/board_square.go) |       |
+| [Tiles](./internal/domain/tile/tiles.go)                      |       |
 
 ### Domain Use Cases
 
-| Use Case | Notes |
-| :------- | :---- |
-| ` `      |       |
+| Use Case                                                    | Notes |
+| :---------------------------------------------------------- | :---- |
+| [RenderSquares](./internal/domain/square/render_squares.go) |       |
 
 ### Gateways
 
-| Gateway | Notes |
-| :------ | :---- |
-| ` `     |       |
+| Gateway | Notes                                            |
+| :------ | :----------------------------------------------- |
+| Words   | Words list used to populate internal dictionary. |
 
 ### Security Mitigations
 
