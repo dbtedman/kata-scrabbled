@@ -8,6 +8,7 @@
 A solving program that suggests words using your current letters and the layout of the board.
 
 -   [Getting Started](#getting-started)
+-   [Verification](#verification)
 -   [Design](#design)
 -   [Attribution](#attribution)
 -   [License](#license)
@@ -19,6 +20,28 @@ nvm use && make && ./scrabbled
 ```
 
 Visit [http://localhost:8080](http://localhost:8080)
+
+## Verification
+
+### Linting
+
+-   [Prettier](https://prettier.io)
+
+```shell
+make lint
+```
+
+These rules can then be automatically applied:
+
+```shell
+make format
+```
+
+### Unit Testing
+
+```shell
+make test
+```
 
 ## Design
 
