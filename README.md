@@ -3,10 +3,9 @@
 > ⚠️ WARNING: Not production ready code.
 
 [![CI GitHub Pipeline](https://img.shields.io/github/workflow/status/dbtedman/kata-scrabbled/ci?style=for-the-badge&logo=github&label=ci)](https://github.com/dbtedman/kata-scrabbled/actions/workflows/ci.yml)
+![language: go](https://img.shields.io/badge/language-go-blue.svg?style=for-the-badge&logo=go)
 
 A solving program that suggests words using your current letters and the layout of the board.
-
-![Screenshot](./Screenshot.png)
 
 -   [Getting Started](#getting-started)
 -   [Design](#design)
