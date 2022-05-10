@@ -3,7 +3,7 @@ package web
 import (
 	"github.com/dbtedman/kata-scrabbled/internal/domain/board"
 	"github.com/dbtedman/kata-scrabbled/internal/domain/tile"
-	resource2 "github.com/dbtedman/kata-scrabbled/web/resource"
+	"github.com/dbtedman/kata-scrabbled/web/resource"
 	"log"
 	"net/http"
 )
@@ -19,26 +19,26 @@ func (w Web) Listen() error {
 	boardsRepository.Seed()
 	tilesRepository.Seed()
 
-	index := resource2.Index{
+	anIndex := resource.Index{
 		BoardsRepository: &boardsRepository,
 		TilesRepository:  &tilesRepository,
 	}
-	board := resource2.Board{
+	aBoard := resource.Board{
 		BoardsRepository: &boardsRepository,
 	}
-	tiles := resource2.Tiles{
+	someTiles := resource.Tiles{
 		TilesRepository: &tilesRepository,
 	}
-	recommended := resource2.Recommended{}
+	aRecommended := resource.Recommended{}
 
 	// Support serving of static assets
 	fs := http.FileServer(http.Dir("./web/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	http.HandleFunc("/", index.Handle)
-	http.HandleFunc("/board", board.Handle)
-	http.HandleFunc("/tiles", tiles.Handle)
-	http.HandleFunc("/recommended", recommended.Handle)
+	http.HandleFunc("/", anIndex.Handle)
+	http.HandleFunc("/board", aBoard.Handle)
+	http.HandleFunc("/tiles", someTiles.Handle)
+	http.HandleFunc("/recommended", aRecommended.Handle)
 
 	log.Printf("Listening to requests on %s...", w.Addr)
 

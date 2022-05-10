@@ -6,13 +6,13 @@ install:
 	@pnpm install && go mod vendor
 
 lint:
-	@pnpm run lint && gofmt -l ./main.go ./cmd ./internal ./web
+	@pnpm run lint && gofmt -l ./cmd ./internal ./web
 
 format:
-	@pnpm run format && gofmt -w ./main.go ./cmd ./internal ./web
+	@pnpm run format && gofmt -w ./cmd ./internal ./web
 
 test:
-	@go test -cover -coverprofile=coverage.txt ./cmd/.. ./internal/... ./web/...
+	@go test -race -cover -coverprofile=coverage.txt ./...
 
 build:
-	@go build -mod vendor -o scrabbled
+	@go build -race -mod vendor -o scrabbled ./cmd/scrabbled
