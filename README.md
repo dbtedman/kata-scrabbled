@@ -50,23 +50,29 @@ make test
 
 ### Domain Entities
 
-| Entity                                                        | Notes |
-| :------------------------------------------------------------ | :---- |
-| [Boards](./internal/domain/board/boards.go)                   |       |
-| [BoardSquare](./internal/domain/board_square/board_square.go) |       |
-| [Tiles](./internal/domain/tile/tiles.go)                      |       |
+#### [Boards](./internal/domain/board/boards.go)
+
+_Placeholder_
+
+#### [BoardSquare](./internal/domain/board_square/board_square.go)
+
+_Placeholder_
+
+#### [Tiles](./internal/domain/tile/tiles.go)
+
+_Placeholder_
 
 ### Domain Use Cases
 
-| Use Case                                                    | Notes |
-| :---------------------------------------------------------- | :---- |
-| [RenderSquares](./internal/domain/square/render_squares.go) |       |
+#### [Render Squares](./internal/domain/square/render_squares.go)
+
+_Placeholder_
 
 ### Gateways
 
-| Gateway | Notes                                            |
-| :------ | :----------------------------------------------- |
-| Words   | Words list used to populate internal dictionary. |
+#### Words
+
+Words list used to populate internal dictionary.
 
 ### Security Mitigations
 
