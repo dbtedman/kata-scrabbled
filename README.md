@@ -1,6 +1,7 @@
-# [Kata](https://github.com/dbtedman/kata) // [Scrabbled](https://github.com/dbtedman/kata-scrabbled)
+# [Scrabbled](https://github.com/dbtedman/kata-scrabbled)
 
-> ⚠️ WARNING: Not production ready code.
+> **⚠️ WARNING:** Not production ready code, instead a [Code Kata](https://github.com/dbtedman#code-kata) intended to
+> hone my programming skills through practice and repetition.
 
 [![CI GitHub Pipeline](https://img.shields.io/github/workflow/status/dbtedman/kata-scrabbled/ci?style=for-the-badge&logo=github&label=ci)](https://github.com/dbtedman/kata-scrabbled/actions/workflows/ci.yml)
 [![sast workflow status](https://img.shields.io/github/workflow/status/dbtedman/kata-scrabbled/sast?style=for-the-badge&logo=github&label=sast)](https://github.com/dbtedman/kata-scrabbled/actions/workflows/sast.yml)
@@ -12,6 +13,7 @@ A solving program that suggests words using your current letters and the layout 
 -   [Verification](#verification)
 -   [Design](#design)
 -   [Attribution](#attribution)
+-   [References](#references)
 -   [License](#license)
 
 ## Getting Started
@@ -116,6 +118,10 @@ _Placeholder_
 
 `./support/words.txt` accessed from [github.com/dwyl/english-words](https://github.com/dwyl/english-words), accessed
 under [public domain](https://github.com/dwyl/english-words/blob/master/LICENSE.md).
+
+## References
+
+_Placeholder_
 
 ## License
 
