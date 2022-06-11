@@ -1,4 +1,6 @@
 {
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "format": "sort-package-json && prettier . --write",
     "lint": "sort-package-json --check && prettier . --check"
