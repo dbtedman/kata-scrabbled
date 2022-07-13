@@ -6,6 +6,7 @@
 [![CI GitHub Pipeline](https://img.shields.io/github/workflow/status/dbtedman/kata-scrabbled/ci?style=for-the-badge&logo=github&label=ci)](https://github.com/dbtedman/kata-scrabbled/actions/workflows/ci.yml)
 [![sast workflow status](https://img.shields.io/github/workflow/status/dbtedman/kata-scrabbled/sast?style=for-the-badge&logo=github&label=sast)](https://github.com/dbtedman/kata-scrabbled/actions/workflows/sast.yml)
 ![language: go](https://img.shields.io/badge/language-go-blue.svg?style=for-the-badge&logo=go)
+[![MIT License](https://img.shields.io/github/license/dbtedman/kata-scrabbled?color=orange&style=for-the-badge)](https://github.com/dbtedman/kata-scrabbled/blob/main/LICENSE.md)
 
 A solving program that suggests words using your current letters and the layout of the board.
 
